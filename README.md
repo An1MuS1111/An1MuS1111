@@ -2,6 +2,6 @@
 
 # Hey! This is Khalid
 
-I'm a passionate software engineer & Research Enthusiast with more than two years of experience building full-stack applications.
+I'm a passionate Software Engineer & Research Enthusiast with more than two years of experience building full-stack applications.
 
 
