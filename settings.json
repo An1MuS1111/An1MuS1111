@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.colorTheme": "Aura Soft Dark (Soft Text)",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "files.autoSave": "afterDelay",
   "security.workspace.trust.untrustedFiles": "open",
@@ -27,7 +27,6 @@
   "database-client.showUser": true,
   "database-client.showTrigger": true,
   "database-client.saveConnectionExpandedState": true,
-  "workbench.sideBar.location": "right",
   "window.confirmSaveUntitledWorkspace": false,
   "editor.cursorBlinking": "expand",
   "terminal.integrated.cursorBlinking": true,
@@ -69,54 +68,67 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-"better-comments.highlightPlainText": false,
-"better-comments.highlightComments": true,
-"better-comments.tags": [
-  {
-    "tag": "!",
-    "color": "#FF2D00",
-    "strikethrough": false,
-    "underline": false,
-    "backgroundColor": "transparent",
-    "bold": false,
-    "italic": false
+  "better-comments.highlightPlainText": false,
+  "better-comments.highlightComments": true,
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "exec",
+      "color": "#000000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#eceff1",
+      "bold": true,
+      "italic": false
+    }
+  ],
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  {
-    "tag": "?",
-    "color": "#3498DB",
-    "strikethrough": false,
-    "underline": false,
-    "backgroundColor": "transparent",
-    "bold": false,
-    "italic": false
-  },
-  {
-    "tag": "//",
-    "color": "#474747",
-    "strikethrough": true,
-    "underline": false,
-    "backgroundColor": "transparent",
-    "bold": false,
-    "italic": false
-  },
-  {
-    "tag": "todo",
-    "color": "#FF8C00",
-    "strikethrough": false,
-    "underline": false,
-    "backgroundColor": "transparent",
-    "bold": false,
-    "italic": false
-  },
-  {
-    "tag": "*",
-    "color": "#98C379",
-    "strikethrough": false,
-    "underline": false,
-    "backgroundColor": "transparent",
-    "bold": false,
-    "italic": false
-  }
-],
-
+  "workbench.activityBar.location": "top",
+  "workbench.sideBar.location": "right"
 }
