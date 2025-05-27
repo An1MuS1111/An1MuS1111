@@ -1,6 +1,5 @@
 {
-  "workbench.colorTheme": "Aura Soft Dark (Soft Text)",
-  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "workbench.iconTheme": "file-icons",
   "files.autoSave": "afterDelay",
   "security.workspace.trust.untrustedFiles": "open",
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
@@ -15,9 +14,15 @@
     "editor.wordBasedSuggestions": "off"
   },
   "editor.fontLigatures": true,
+  "editor.fontWeight": "400",
   "terminal.integrated.fontWeightBold": "bold",
+
   // "editor.fontFamily": "'JetBrains Mono'",
-  "editor.fontFamily": "'Geist Mono', 'JetBrains Mono'",
+  // "editor.fontFamily": "'Cascadia Code'",
+  "editor.fontFamily": "'FiraMono Nerd Font Mono'",
+  // "editor.fontFamily": "'Geist Mono', 'JetBrains Mono'",
+  //
+
   "git.autofetch": true,
   "editor.formatOnSave": true,
   "explorer.confirmDelete": false,
@@ -61,7 +66,7 @@
   "deno.env": {},
   "deno.enable": false,
   "deno.lint": true,
-  "deno.unstable": true,
+  "deno.unstable": ["true"],
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -130,5 +135,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.activityBar.location": "top",
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.ignoreRebaseWarning": true,
+  "notebook.lineNumbers": "on",
+  "redhat.telemetry.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "cmake.cmakePath": "/Applications/CMake.app/Contents/bin/cmake"
 }
