@@ -1,7 +1,3 @@
-![Simple Work LinkedIn Banner](https://github.com/user-attachments/assets/b40c6963-9ce0-4516-b6cf-42b5ab62ed3c)
-
-# Hey! This is Khalid
-
-I'm a passionate Software Engineer & Research Enthusiast with more than two years of experience building full-stack applications.
-
-
+![Detailed Digital Hands Remix](https://github.com/user-attachments/assets/1d00e7b3-425d-4466-a2f2-c7fd23aaf4c0)
+<h2 align="center"><em>What I cannot create, I do not understand</em></h2>
+<h3 align="center">— <strong>Richard Feynman</strong></h3>
