@@ -14,7 +14,8 @@
     "editor.wordBasedSuggestions": "off"
   },
   "editor.fontLigatures": true,
-  "editor.fontWeight": "400",
+  // "editor.fontWeight": "400",
+  // "editor.fontVariations": false,
   "terminal.integrated.fontWeightBold": "bold",
 
   // "editor.fontFamily": "'JetBrains Mono'",
@@ -58,7 +59,7 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "terminal.integrated.fontFamily": "Geist Mono",
+  "terminal.integrated.fontFamily": "FiraMono Nerd Font Mono",
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.cursorStyleInactive": "underline",
   "terminal.external.osxExec": "Warp.app",
@@ -86,6 +87,15 @@
       "italic": false
     },
     {
+      "tag": "hint:",
+      "color": "#D4DF9E",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
       "tag": "?",
       "color": "#3498DB",
       "strikethrough": false,
@@ -104,12 +114,12 @@
       "italic": false
     },
     {
-      "tag": "todo",
+      "tag": "todo:",
       "color": "#FF8C00",
       "strikethrough": false,
-      "underline": false,
+      "underline": true,
       "backgroundColor": "transparent",
-      "bold": true,
+      "bold": false,
       "italic": false
     },
     {
@@ -145,5 +155,19 @@
   "redhat.telemetry.enabled": true,
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.unicodeHighlight.ambiguousCharacters": false,
-  "cmake.cmakePath": "/Applications/CMake.app/Contents/bin/cmake"
+  "cmake.cmakePath": "/Applications/CMake.app/Contents/bin/cmake",
+  "explorer.confirmPasteNative": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "rust": false
+  },
+  "makefile.configureOnOpen": true,
+  "explorer.compactFolders": false
 }
