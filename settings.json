@@ -14,6 +14,7 @@
     "editor.wordBasedSuggestions": "off"
   },
   "editor.fontLigatures": true,
+  "editor.fontSize": 14,
   // "editor.fontWeight": "400",
   // "editor.fontVariations": false,
   "terminal.integrated.fontWeightBold": "bold",
@@ -34,6 +35,8 @@
   "database-client.showTrigger": true,
   "database-client.saveConnectionExpandedState": true,
   "window.confirmSaveUntitledWorkspace": false,
+  "zenMode.centerLayout": true,
+  "zenMode.restore": false,
   "editor.cursorBlinking": "expand",
   "terminal.integrated.cursorBlinking": true,
   "editor.largeFileOptimizations": false,
@@ -169,5 +172,6 @@
     "rust": false
   },
   "makefile.configureOnOpen": true,
-  "explorer.compactFolders": false
+  "explorer.compactFolders": false,
+  "workbench.colorTheme": "Monokai Pro (Filter Machine)"
 }
