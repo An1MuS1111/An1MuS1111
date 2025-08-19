@@ -1,5 +1,4 @@
 {
-  "workbench.iconTheme": "file-icons",
   "files.autoSave": "afterDelay",
   "security.workspace.trust.untrustedFiles": "open",
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
@@ -173,5 +172,7 @@
   },
   "makefile.configureOnOpen": true,
   "explorer.compactFolders": false,
-  "workbench.colorTheme": "Monokai Pro (Filter Machine)"
+  "workbench.colorTheme": "One Monokai",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.iconTheme": "atom-file-icon-with-jetbrains"
 }
