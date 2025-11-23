@@ -7,27 +7,24 @@
 	"[dart]": {
 		"editor.formatOnSave": true,
 		"editor.formatOnType": true,
-		"editor.rulers": [80],
+		"editor.rulers": [
+			80
+		],
 		"editor.selectionHighlight": false,
 		"editor.suggestSelection": "first",
 		"editor.tabCompletion": "onlySnippets",
 		"editor.wordBasedSuggestions": "off"
 	},
 	"[js]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"editor.fontLigatures": true,
 	"editor.fontSize": 14,
-	// "editor.fontWeight": "400",
-	// "editor.fontVariations": false,
 	"terminal.integrated.fontWeightBold": "bold",
-
-	// "editor.fontFamily": "'JetBrains Mono'",
-	// "editor.fontFamily": "'Cascadia Code'",
-	"editor.fontFamily": "'FiraMono Nerd Font Mono'",
-	// "editor.fontFamily": "'Geist Mono', 'JetBrains Mono'",
-	//
-
+	"terminal.integrated.gpuAcceleration": "auto",
+	// "editor.fontFamily": "'FiraMono Nerd Font Mono'",
+	// "editor.fontFamily": "'CaskaydiaMono Nerd Font Mono'",
+	"editor.fontFamily": "'0xProto Nerd Font Mono'",
 	"git.autofetch": true,
 	"editor.formatOnSave": true,
 	"explorer.confirmDelete": false,
@@ -63,29 +60,42 @@
 		"*.s3db": "${capture}.${extname}-*"
 	},
 	"[javascriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
+	"[rust]": {
+		"editor.inlayHints.enabled": "offUnlessPressed",
+	},
+	"terminal.integrated.fontSize": 16,
 	"terminal.integrated.fontFamily": "FiraMono Nerd Font Mono",
 	"terminal.integrated.cursorStyle": "line",
 	"terminal.integrated.cursorStyleInactive": "underline",
 	"terminal.external.osxExec": "Warp.app",
 	"typescript.updateImportsOnFileMove.enabled": "always",
-	"deno.env": {},
-	"deno.enable": false,
-	"deno.lint": true,
-	"deno.unstable": ["true"],
 	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[python]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"better-comments.highlightPlainText": false,
 	"better-comments.highlightComments": true,
 	"better-comments.tags": [
 		{
 			"tag": "!",
-			"color": "#FF2D00",
+			"color": "#E5E9C5",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "transparent",
+			"bold": false,
+			"italic": false
+		},
+		{
+			"tag": "/",
+			"color": "#D3DAD9",
 			"strikethrough": false,
 			"underline": false,
 			"backgroundColor": "transparent",
@@ -111,15 +121,6 @@
 			"italic": false
 		},
 		{
-			"tag": "//",
-			"color": "#474747",
-			"strikethrough": true,
-			"underline": false,
-			"backgroundColor": "transparent",
-			"bold": false,
-			"italic": false
-		},
-		{
 			"tag": "todo:",
 			"color": "#FFFFFF",
 			"strikethrough": false,
@@ -137,34 +138,39 @@
 			"bold": false,
 			"italic": false
 		},
-		{
-			"tag": "exec",
-			"color": "#000000",
-			"strikethrough": false,
-			"underline": false,
-			"backgroundColor": "#eceff1",
-			"bold": true,
-			"italic": false
-		}
+		// {
+		// 	"tag": "exec",
+		// 	"color": "#000000",
+		// 	"strikethrough": false,
+		// 	"underline": false,
+		// 	"backgroundColor": "#eceff1",
+		// 	"bold": true,
+		// 	"italic": false
+		// }
 	],
 	"[html]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"workbench.activityBar.location": "top",
 	"workbench.sideBar.location": "right",
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"git.ignoreRebaseWarning": true,
 	"notebook.lineNumbers": "on",
+	"notebook.formatOnSave.enabled": true,
 	"redhat.telemetry.enabled": true,
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.unicodeHighlight.ambiguousCharacters": false,
 	"cmake.cmakePath": "/Applications/CMake.app/Contents/bin/cmake",
+	"cmake.configureSettings": {
+		"CMAKE_C_COMPILER": "/opt/homebrew/opt/llvm/bin/clang",
+		"CMAKE_CXX_COMPILER": "/opt/homebrew/opt/llvm/bin/clang++"
+	},
 	"explorer.confirmPasteNative": false,
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"go.toolsManagement.autoUpdate": true,
 	"github.copilot.enable": {
@@ -177,23 +183,68 @@
 	"makefile.configureOnOpen": true,
 	"explorer.compactFolders": false,
 	"workbench.secondarySideBar.defaultVisibility": "hidden",
-	"workbench.iconTheme": "vscode-icons",
-	"prettier.tabWidth": 4,
-	"prettier.useTabs": true,
+	"workbench.iconTheme": "atom-file-icon-with-jetbrains",
+	// "prettier.tabWidth": 4,
+	// "prettier.useTabs": true,
 	"terminal.integrated.fontLigatures.enabled": true,
-	"workbench.colorTheme": "GitHub Dark Default",
-	"workbench.colorCustomizations": {
-		"terminal.background": "#00000000"
-	},
+	"workbench.colorCustomizations": {},
 	"window.titleBarStyle": "custom",
-	"terminal.integrated.gpuAcceleration": "off",
-	"window.systemColorTheme": "dark",
-	"window.autoDetectColorScheme": false
+	"python.analysis.typeCheckingMode": "standard",
+	"docker.extension.enableComposeLanguageServer": false,
+	"[dockercompose]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced",
+		"editor.quickSuggestions": {
+			"other": true,
+			"comments": false,
+			"strings": true
+		},
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
+	"git.confirmSync": false,
 	// all go Inlay Hints
 	// "go.inlayHints.assignVariableTypes": true,
 	// "go.inlayHints.compositeLiteralFields": true,
 	// "go.inlayHints.compositeLiteralTypes": true,
 	// "go.inlayHints.functionTypeParameters": true,
 	// "go.inlayHints.parameterNames": true,
-	// "go.inlayHints.rangeVariableTypes": true
+	// "go.inlayHints.rangeVariableTypes": true,
+	"editor.tokenColorCustomizations": {
+		"textMateRules": [
+			{
+				"scope": [
+					"comment",
+					"punctuation.definition.comment" // Include this for more comprehensive comment styling
+				],
+				"settings": {
+					"fontStyle": ""
+				}
+			}
+		]
+	},
+	"workbench.colorTheme": "Tomorrow Night Eighties",
+	"geminicodeassist.project": "nomadic-system-88457",
+	"geminicodeassist.displayInlineContextHint": false,
+	"geminicodeassist.enable": true,
+	"geminicodeassist.inlineSuggestions.enableAuto": false,
+	"geminicodeassist.enableTelemetry": false,
+	"diffEditor.codeLens": true,
+	"C_Cpp.formatting": "clangFormat",
+	"C_Cpp.intelliSenseUpdateDelay": 500,
+	"C_Cpp.codeAnalysis.updateDelay": 500,
+	"C_Cpp.clang_format_fallbackStyle": "llvm",
+	"C_Cpp.intelliSenseEngine": "default",
+	"C_Cpp.inlayHints.autoDeclarationTypes.enabled": true,
+	"C_Cpp.inlayHints.parameterNames.enabled": true,
+	"C_Cpp.inlayHints.referenceOperator.enabled": true,
+	// You may also want to ensure the global setting is on
+	"editor.inlayHints.enabled": "on",
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"geminicodeassist.agentYoloMode": true,
 }
