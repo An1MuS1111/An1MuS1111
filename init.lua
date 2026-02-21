@@ -799,7 +799,10 @@ require('lazy').setup({
               end,
             })
           end
-
+          -- clangd inlay hints
+          if client and client.name == 'clangd' then
+            vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+          end
           -- The following code creates a keymap to toggle inlay hints in your
           -- code, if the language server you are using supports them
           --
@@ -858,7 +861,20 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          -- Best flags for C++ development in 2026
+          cmd = {
+            'clangd',
+            '--background-index', -- Build index in background
+            '--clang-tidy', -- Enable linting
+            '--header-insertion=iwyu', -- "Include What You Use" logic
+            '--completion-style=detailed', -- More info in the blink.cmp menu
+            '--function-arg-placeholders', -- Auto-adds placeholders for params
+          },
+          init_options = {
+            fallbackFlags = { '-std=c++23' }, -- Default to latest standard
+          },
+        },
         gopls = {},
         -- pyright = {},
         rust_analyzer = {},
@@ -903,6 +919,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'clang-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -943,19 +960,25 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          return nil
-        else
-          return {
-            timeout_ms = 500,
-            lsp_format = 'fallback',
-          }
-        end
+        -- local disable_filetypes = { c = true, cpp = true }
+        -- if disable_filetypes[vim.bo[bufnr].filetype] then
+        --   return nil
+        -- else
+        --   return {
+        --     timeout_ms = 500,
+        --     lsp_format = 'fallback',
+        --   }
+        -- end
+        return {
+          timeout_ms = 500,
+          lsp_format = 'fallback',
+        }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
+        cpp = { 'clang_format' }, -- Add this
+        c = { 'clang_format' }, -- Add this
         go = { 'goimports', 'gofumpt' },
         rust = { 'rustfmt' },
         -- python = { "isort", "black" },
@@ -1037,7 +1060,7 @@ require('lazy').setup({
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'super-tab',
-
+        ['<CR>'] = { 'accept', 'fallback' },
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       },
