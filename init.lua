@@ -875,7 +875,13 @@ require('lazy').setup({
             fallbackFlags = { '-std=c++23' }, -- Default to latest standard
           },
         },
-        gopls = {},
+        gopls = {
+          settings = {
+            gopls = {
+              gofumpt = true, -- Enable the stricter formatter
+            },
+          },
+        },
         -- pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -920,6 +926,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'clang-format',
+        'goimports', -- Add this
+        'gofumpt', -- Add this
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -968,9 +976,17 @@ require('lazy').setup({
         --     timeout_ms = 500,
         --     lsp_format = 'fallback',
         --   }
-        -- end
+        -- end,
+        local timeouts = {
+          go = 2000, -- Give goimports/gofumpt more time
+          rust = 1000, -- Rust is usually faster but benefits from a buffer
+          cpp = 1000, -- Adding a 1-second buffer for C++
+          c = 1000,
+        }
+        local filetype = vim.bo[bufnr].filetype
+        local timeout = timeouts[filetype] or 500 -- Default to 500ms for others
         return {
-          timeout_ms = 500,
+          timeout_ms = timeout,
           lsp_format = 'fallback',
         }
       end,
