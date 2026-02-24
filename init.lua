@@ -100,7 +100,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -322,7 +322,7 @@ require('lazy').setup({
     opts = {
       open_mapping = [[<c-t>]], -- Use Ctrl + t to toggle it
       direction = 'horizontal', -- Open it at the bottom
-      size = 25, -- Height of the terminal
+      size = 20, -- Height of the terminal
       insert_mappings = true, -- Whether to use open mapping in insert mode
       terminal_mappings = true, -- Whether to use open mapping in terminal mode
       shade_terminals = true,
@@ -340,34 +340,34 @@ require('lazy').setup({
     end,
   },
   -- Configuration for rainbow-delimiters
-  {
-    'HiPhish/rainbow-delimiters.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    event = 'VeryLazy',
-    config = function()
-      -- Instead of just setting a global variable,
-      -- we use the setup function for 2026 compatibility
-      local rb = require 'rainbow-delimiters'
-
-      require('rainbow-delimiters.setup').setup {
-        strategy = {
-          [''] = rb.strategy['global'],
-        },
-        query = {
-          [''] = 'rainbow-delimiters',
-        },
-        highlight = {
-          'RainbowDelimiterRed',
-          'RainbowDelimiterYellow',
-          'RainbowDelimiterBlue',
-          'RainbowDelimiterOrange',
-          'RainbowDelimiterGreen',
-          'RainbowDelimiterViolet',
-          'RainbowDelimiterCyan',
-        },
-      }
-    end,
-  },
+  -- {
+  --   'HiPhish/rainbow-delimiters.nvim',
+  --   dependencies = 'nvim-treesitter/nvim-treesitter',
+  --   event = 'VeryLazy',
+  --   config = function()
+  --     -- Instead of just setting a global variable,
+  --     -- we use the setup function for 2026 compatibility
+  --     local rb = require 'rainbow-delimiters'
+  --
+  --     require('rainbow-delimiters.setup').setup {
+  --       strategy = {
+  --         [''] = rb.strategy['global'],
+  --       },
+  --       query = {
+  --         [''] = 'rainbow-delimiters',
+  --       },
+  --       highlight = {
+  --         'RainbowDelimiterRed',
+  --         'RainbowDelimiterYellow',
+  --         'RainbowDelimiterBlue',
+  --         'RainbowDelimiterOrange',
+  --         'RainbowDelimiterGreen',
+  --         'RainbowDelimiterViolet',
+  --         'RainbowDelimiterCyan',
+  --       },
+  --     }
+  --   end,
+  -- },
   -- {
   --   'xiyaowong/transparent.nvim',
   --   lazy = false,
@@ -1401,10 +1401,10 @@ vim.opt.autowriteall = true
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 -- These must be defined AFTER the colorscheme is loaded
-vim.api.nvim_set_hl(0, 'RainbowDelimiterRed', { fg = '#fb4934', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#fabd2f', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterBlue', { fg = '#83a598', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange', { fg = '#fe8019', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen', { fg = '#b8bb26', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterViolet', { fg = '#d3869b', bold = true })
-vim.api.nvim_set_hl(0, 'RainbowDelimiterCyan', { fg = '#8ec07c', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterRed', { fg = '#fb4934', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterYellow', { fg = '#fabd2f', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterBlue', { fg = '#83a598', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterOrange', { fg = '#fe8019', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterGreen', { fg = '#b8bb26', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterViolet', { fg = '#d3869b', bold = true })
+-- vim.api.nvim_set_hl(0, 'RainbowDelimiterCyan', { fg = '#8ec07c', bold = true })
