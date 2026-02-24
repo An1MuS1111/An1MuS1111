@@ -4,17 +4,6 @@
 	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
 	"editor.guides.bracketPairs": true,
 	"editor.tabSize": 4,
-	"[dart]": {
-		"editor.formatOnSave": true,
-		"editor.formatOnType": true,
-		"editor.rulers": [
-			80
-		],
-		"editor.selectionHighlight": false,
-		"editor.suggestSelection": "first",
-		"editor.tabCompletion": "onlySnippets",
-		"editor.wordBasedSuggestions": "off"
-	},
 	"[js]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
@@ -22,6 +11,7 @@
 	"editor.fontSize": 14,
 	"terminal.integrated.fontWeightBold": "bold",
 	"terminal.integrated.gpuAcceleration": "auto",
+	// "editor.fontFamily": "'JetBrainsMono Nerd Font Mono'",
 	// "editor.fontFamily": "'FiraMono Nerd Font Mono'",
 	// "editor.fontFamily": "'CaskaydiaMono Nerd Font Mono'",
 	"editor.fontFamily": "'0xProto Nerd Font Mono'",
@@ -29,7 +19,6 @@
 	"editor.formatOnSave": true,
 	"explorer.confirmDelete": false,
 	"git.openRepositoryInParentFolders": "never",
-	"window.commandCenter": false,
 	"explorer.confirmDragAndDrop": false,
 	"database-client.showUser": true,
 	"database-client.showTrigger": true,
@@ -95,7 +84,7 @@
 		},
 		{
 			"tag": "/",
-			"color": "#D3DAD9",
+			"color": "#00a5ab",
 			"strikethrough": false,
 			"underline": false,
 			"backgroundColor": "transparent",
@@ -138,22 +127,22 @@
 			"bold": false,
 			"italic": false
 		},
-		// {
-		// 	"tag": "exec",
-		// 	"color": "#000000",
-		// 	"strikethrough": false,
-		// 	"underline": false,
-		// 	"backgroundColor": "#eceff1",
-		// 	"bold": true,
-		// 	"italic": false
-		// }
+		{
+			"tag": "[incomplete]",
+			"color": "#000000",
+			"strikethrough": false,
+			"underline": false,
+			"backgroundColor": "#eceff1",
+			"bold": true,
+			"italic": false
+		}
 	],
 	"[html]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"workbench.activityBar.location": "top",
 	"workbench.sideBar.location": "right",
-	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.defaultProfile.osx": "tmux",
 	"[jsonc]": {
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
@@ -178,12 +167,11 @@
 		"plaintext": false,
 		"markdown": false,
 		"scminput": false,
-		"rust": false
 	},
 	"makefile.configureOnOpen": true,
 	"explorer.compactFolders": false,
 	"workbench.secondarySideBar.defaultVisibility": "hidden",
-	"workbench.iconTheme": "atom-file-icon-with-jetbrains",
+	"workbench.iconTheme": "file-icons",
 	// "prettier.tabWidth": 4,
 	// "prettier.useTabs": true,
 	"terminal.integrated.fontLigatures.enabled": true,
@@ -218,7 +206,11 @@
 			{
 				"scope": [
 					"comment",
-					"punctuation.definition.comment" // Include this for more comprehensive comment styling
+					"emphasis",
+					"keyword",
+					"markup.italic",
+					"storage.modifier"
+					// Add any other specific scopes you find that are still italicized
 				],
 				"settings": {
 					"fontStyle": ""
@@ -226,7 +218,7 @@
 			}
 		]
 	},
-	"workbench.colorTheme": "Tomorrow Night Eighties",
+	"workbench.colorTheme": "Gruvbox Dark Hard",
 	"geminicodeassist.project": "nomadic-system-88457",
 	"geminicodeassist.displayInlineContextHint": false,
 	"geminicodeassist.enable": true,
@@ -247,4 +239,50 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"geminicodeassist.agentYoloMode": true,
+	"zig.zls.enabled": "on",
+	"mesonbuild.downloadLanguageServer": true,
+	"gitlens.ai.model": "gemini:gemini-2.5-flash",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
+	"terminal.integrated.profiles.osx": {
+		"bash": {
+			"path": "bash",
+			"args": [
+				"-l"
+			],
+			"icon": "terminal-bash"
+		},
+		"zsh": {
+			"path": "zsh",
+			"args": [
+				"-l"
+			]
+		},
+		"fish": {
+			"path": "fish",
+			"args": [
+				"-l"
+			]
+		},
+		"tmux": {
+			"path": "/opt/homebrew/bin/tmux"
+		},
+		"pwsh": {
+			"path": "pwsh",
+			"icon": "terminal-powershell"
+		}
+	},
+	"http.systemCertificatesNode": true,
+	"editor.formatOnPaste": true,
+	"cmake.showNotAllDocumentsSavedQuestion": false,
+	"json.schemaDownload.trustedDomains": {
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://biomejs.dev": true
+	},
+	"chat.agentsControl.enabled": false,
+	"workbench.navigationControl.enabled": false,
+	"window.commandCenter": false,
 }
