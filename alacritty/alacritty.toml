@@ -3,6 +3,7 @@ import = ["alacritty-theme/themes/gruvbox_dark.toml"]
 live_config_reload = true
 
 [font]
+# Previously used fonts commented out for your reference
 # normal = { family = "0xProto Nerd Font Mono", style = "Medium" }
 # bold = { family = "0xProto Nerd Font Mono", style = "Bold" }
 # normal = { family = "CaskaydiaCove Nerd Font", style = "Medium" }
@@ -11,10 +12,16 @@ live_config_reload = true
 # bold = { family = "Roboto Mono", style = "Bold" }
 # italic = { family = "Roboto Mono", style = "Italic" }
 # bold_italic = { family = "Roboto Mono", style = "Bold Italic" }
-normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
-bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
-italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
-bold_italic = { family = "FiraCode Nerd Font Mono", style = "Bold Italic" }
+# normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
+# bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
+# italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
+# bold_italic = { family = "FiraCode Nerd Font Mono", style = "Bold Italic" }
+
+# Active CaskaydiaCove Nerd Font Mono configuration
+normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold Italic" }
 size = 12 
 
 [window]
