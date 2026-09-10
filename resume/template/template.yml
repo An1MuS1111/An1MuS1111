@@ -1,0 +1,184 @@
+# yaml-language-server: $schema=../cv.typ.schema.json
+# CV data for Abdullah Al Khalid
+# Edit this file to update content. Compile with: make compile
+
+personal:
+  name: Abdullah Al Khalid
+  email: khalidrafi1111@gmail.com
+  phone: "+8801847791909"
+  url:
+  titles:
+    - Software Engineer
+    - Distributed Systems
+  location:
+    city: Johor Bahru
+    region: Johor
+    country: Malaysia
+  profiles:
+    - network: LinkedIn
+      username: khalidrafi1111
+      url: https://linkedin.com/in/khalidrafi1111
+    - network: GitHub
+      username: An1MuS1111
+      url: https://github.com/An1MuS1111
+
+summary: >
+  Software engineering graduate focused on distributed systems, databases, and
+  backend infrastructure. Experience with .NET APIs, SQL data pipelines, and
+  systems work in Rust and Go — including Raft, gossip protocols, CRDTs, and
+  append-only logs.
+
+education:
+  - institution: Universiti Teknologi Malaysia (UTM)
+    url: https://www.utm.my
+    area: Software Engineering
+    studyType: Bachelor of Computer Science with Honours
+    startDate: 2021
+    endDate: 2025
+    location: Skudai, Johor, Malaysia
+
+work:
+  - organization: DKSH
+    url: https://www.dksh.com
+    location: Kuala Lumpur, Malaysia
+    positions:
+      - position: Software Engineer Intern
+        startDate: 2024-09
+        endDate: 2025-02
+        highlights:
+          - Gained hands-on experience in application management, web development, and automation while collaborating with cross-functional teams in a production environment.
+          - Contributed to an internal service write-up involving .NET Core for API management and a data pipeline.
+          - Developed a website development plugin.
+          - Managed data migration and integration with SQL Server / MSSQL databases.
+
+projects:
+  - name: relic-db
+    url: https://github.com/An1MuS1111
+    affiliation: Distributed key-value store with the Redis RESP protocol
+    stack: Rust
+    highlights:
+      - Built an in-memory key/value store with persistence.
+      - Implemented the Raft algorithm for consistency and fault tolerance among peer nodes.
+      - Designed hot-swappable nodes for failover and new functionality using Kubernetes and HashiCorp Consul.
+
+  - name: pkgLog
+    url: https://github.com/An1MuS1111/log-package
+    affiliation: Idiomatic log writer for distributed systems
+    stack: Go
+    highlights:
+      - Implemented an append-only log that stores records in memory and syncs them to persistent storage.
+      - Used a memory map for indexing and faster caching.
+
+  - name: Miserable Messengers / Gossip Gloomers
+    url: https://github.com/An1MuS1111/Gossip-Glomers-Solved
+    affiliation: Fly.io distributed systems challenge series
+    stack: Rust, Maelstrom/Jepsen
+    highlights:
+      - Built a distributed systems node engine in Rust to solve the Fly.io Gossip Gloomers challenges.
+      - Implemented an actor-based channel model for asynchronous I/O.
+      - Designed custom protocols for anti-entropy, gossip broadcast, CRDTs, and a linearizable key-value store.
+      - Verified nodes against network splits, packet drops, and concurrent client requests using Jepsen-based Maelstrom tests.
+
+affiliations:
+  - organization: RecyclO
+    position: Plastic Waste Management System
+    location: Project
+    highlights:
+      - Designed a plastic waste management system aimed at reducing plastic waste through practical collection and processing workflows.
+      - Focused on collaborative, sustainable solutions intended to reduce environmental impact.
+  - organization: Flood Remission System
+    position: Disaster Management
+    location: Project
+    highlights:
+      - Developed a multipurpose disaster-management application focused on flood mitigation.
+      - Used real-time weather sensors and satellite imagery to track flood conditions and forecast flooding events.
+      - Sent early-warning alerts to residents in flood-prone areas and supported authorities in coordinating rescue, relief, and shelter.
+
+certificates:
+  - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
+    issuer: Maximilian Schwarzmüller & Manuel Lorenz
+    date:
+    url:
+    id:
+  - name: AWS Academy Graduate — AWS Academy Cloud Foundations
+    issuer: Amazon Web Services (AWS Academy)
+    date:
+    url:
+    id:
+  - name: International English Language Testing System (IELTS)
+    issuer: IELTS
+    date:
+    url:
+    id:
+
+courses:
+  - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
+    instructor: Maximilian Schwarzmüller & Manuel Lorenz
+  - name: Product Management Bootcamp
+    issuer: HDNB
+  - name: Learn React
+    instructor: Bob Ziroll
+  - name: MERN Stack Course — Convert Backend to Serverless with MongoDB Realm
+    instructor: Beau Carnes
+
+skills:
+  - category: Languages
+    skills:
+      - Rust
+      - Go
+      - C# / .NET Core
+      - SQL
+      - JavaScript
+  - category: Distributed Systems
+    skills:
+      - Raft
+      - Gossip / anti-entropy
+      - CRDTs
+      - Linearizable KV stores
+      - Append-only logs
+      - Actor-based concurrency
+      - Maelstrom / Jepsen testing
+  - category: Backend & Data
+    skills:
+      - REST APIs
+      - SQL Server / MSSQL
+      - Data migration & integration
+      - MongoDB
+      - Node.js
+      - Express
+  - category: Web
+    skills:
+      - React
+      - MERN stack
+      - Website plugins
+  - category: Infrastructure
+    skills:
+      - Kubernetes
+      - HashiCorp Consul
+      - AWS Cloud Foundations
+      - Git
+
+languages:
+  - language: English
+    fluency: Professional — IELTS
+
+interests:
+  - Distributed systems
+  - Databases
+  - Systems programming
+
+references:
+  - name: A. S. M. Khairuzzaman
+    title: Managing Director & CEO (Acting); Deputy Managing Director & COO
+    organization: Central Counterparty Bangladesh PLC
+    address: DSE Tower, Level 5, Plot-46, Road-21, Nikunja-2, Dhaka-1229, Bangladesh
+    phone: "+8801713425801"
+    email: dmd@ccbl.com.bd
+    reference:
+  - name: Abdullah Al Noman
+    title: Solution Architect
+    organization: DKSH CSSC
+    address: 60000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia
+    phone: "+60 11-2811 8959"
+    email: md.abdullah.noman@dksh.com
+    reference:
