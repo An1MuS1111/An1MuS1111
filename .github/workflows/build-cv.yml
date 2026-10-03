@@ -1,0 +1,39 @@
+name: Build CV
+
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Typst
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.11.1
+
+      - name: Compile CV
+        run: make -C resume compile
+
+      - name: Verify generated PDF
+        run: test -s resume/Abdullah_Al_Khalid_CV.pdf
+
+      - name: Commit generated CV
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md resume/Abdullah_Al_Khalid_CV.pdf
+          if git diff --cached --quiet; then
+            echo "CV and README are already up to date."
+            exit 0
+          fi
+          git commit -m "build: update CV [skip ci]"
+          git push

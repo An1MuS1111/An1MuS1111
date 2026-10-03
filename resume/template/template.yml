@@ -52,14 +52,15 @@ work:
           - Managed data migration and integration with SQL Server / MSSQL databases.
 
 projects:
-  - name: relic-db
-    url: https://github.com/An1MuS1111
-    affiliation: Distributed key-value store with the Redis RESP protocol
+  - name: ironbarrel
+    url: https://github.com/An1MuS1111/ironbarrel
+    affiliation: A log-structured hash table key-value storage engine inspired by the orignal bitcask
     stack: Rust
     highlights:
-      - Built an in-memory key/value store with persistence.
-      - Implemented the Raft algorithm for consistency and fault tolerance among peer nodes.
-      - Designed hot-swappable nodes for failover and new functionality using Kubernetes and HashiCorp Consul.
+      - Built a Rust-based embedded key-value store using append-only log files, in-memory indexing, tombstone-based deletion, TTL expiration, and merge compaction.
+      - Implemented crash recovery and data-integrity checks with CRC32 validation, hint files, corrupted-record detection, file rollover recovery, and fallback data scanning.
+      - Added concurrent access and process safety using DashMap, parking_lot, positional file I/O, serialized write transactions, and shared/exclusive OS file locks.
+      - Developed comprehensive tests and GitHub Actions CI for CRUD operations, concurrency, recovery, corruption handling, compaction, locking, and cross-platform builds.
 
   - name: pkgLog
     url: https://github.com/An1MuS1111/log-package
