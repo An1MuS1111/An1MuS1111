@@ -55,7 +55,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # -----------------------------------------------------------------------------
 # fzf — Ctrl-R history, Ctrl-T files, Alt-C directories
-#   brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
+# brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
 # -----------------------------------------------------------------------------
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
