@@ -21,8 +21,6 @@ jobs:
 
       - name: Set up Typst
         uses: typst-community/setup-typst@v5
-        with:
-          typst-version: 0.11.1
 
       - name: Compile CV
         run: make -C resume compile
