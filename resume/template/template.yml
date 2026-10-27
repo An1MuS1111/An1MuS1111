@@ -9,11 +9,11 @@ personal:
   url:
   titles:
     - Software Engineer
-    - Distributed Systems
+    - Data & Distributed Systems
   location:
-    city: Johor Bahru
-    region: Johor
-    country: Malaysia
+    city: Dhaka
+    region:
+    country: Bangladesh
   profiles:
     - network: LinkedIn
       username: khalidrafi1111
@@ -38,7 +38,7 @@ education:
     location: Skudai, Johor, Malaysia
 
 work:
-  - organization: DKSH
+  - organization: DKSH CSSC
     url: https://www.dksh.com
     location: Kuala Lumpur, Malaysia
     positions:
@@ -46,127 +46,111 @@ work:
         startDate: 2024-09
         endDate: 2025-02
         highlights:
-          - Gained hands-on experience in application management, web development, and automation while collaborating with cross-functional teams in a production environment.
-          - Contributed to an internal service write-up involving .NET Core for API management and a data pipeline.
-          - Developed a website development plugin.
-          - Managed data migration and integration with SQL Server / MSSQL databases.
-
+          - Worked with cross functional teams to keep production applications running smoothly, building a website plugin, automating manual work, and migrating SQL Server data through .NET Core APIs and pipelines.
 projects:
   - name: ironbarrel
     url: https://github.com/An1MuS1111/ironbarrel
     affiliation: A log-structured hash table key-value storage engine inspired by the orignal bitcask
     stack: Rust
     highlights:
-      - Built a Rust-based embedded key-value store using append-only log files, in-memory indexing, tombstone-based deletion, TTL expiration, and merge compaction.
-      - Implemented crash recovery and data-integrity checks with CRC32 validation, hint files, corrupted-record detection, file rollover recovery, and fallback data scanning.
-      - Added concurrent access and process safety using DashMap, parking_lot, positional file I/O, serialized write transactions, and shared/exclusive OS file locks.
-      - Developed comprehensive tests and GitHub Actions CI for CRUD operations, concurrency, recovery, corruption handling, compaction, locking, and cross-platform builds.
-
-  - name: pkgLog
-    url: https://github.com/An1MuS1111/log-package
-    affiliation: Idiomatic log writer for distributed systems
-    stack: Go
-    highlights:
-      - Implemented an append-only log that stores records in memory and syncs them to persistent storage.
-      - Used a memory map for indexing and faster caching.
-
+      - Built a high throughput storage engine from ground up in Rust, inspired by the Basho Bitcask paper; designed lock-free concurrent indexing (KeyDir) and positional reads (pread) to achieve 280k+ ops/sec with 1.2µs p50 read latency.
+      - Engineered a crash-resilient storage & compaction pipeline using hardware-accelerated CRC32 and binary hint-file indexing, cutting 1M-key startup recovery by 96% (from 2.4s to 80ms) while automatically reclaiming dead disk space.
   - name: Miserable Messengers / Gossip Gloomers
     url: https://github.com/An1MuS1111/Gossip-Glomers-Solved
     affiliation: Fly.io distributed systems challenge series
     stack: Rust, Maelstrom/Jepsen
     highlights:
-      - Built a distributed systems node engine in Rust to solve the Fly.io Gossip Gloomers challenges.
-      - Implemented an actor-based channel model for asynchronous I/O.
-      - Designed custom protocols for anti-entropy, gossip broadcast, CRDTs, and a linearizable key-value store.
-      - Verified nodes against network splits, packet drops, and concurrent client requests using Jepsen-based Maelstrom tests.
-
+      - Built a Rust node engine that solved Fly.io distributed systems challenges, including gossip broadcast, CRDT counters, and a linearizable KV store.
+      - Verified correctness under network partitions, packet drops, and concurrent clients using Jepsen’s Maelstrom;
 affiliations:
-  - organization: RecyclO
+  - name: RecyclO
     position: Plastic Waste Management System
-    location: Project
-    highlights:
-      - Designed a plastic waste management system aimed at reducing plastic waste through practical collection and processing workflows.
-      - Focused on collaborative, sustainable solutions intended to reduce environmental impact.
-  - organization: Flood Remission System
+    award: Top 5
+    competition: "Honeywell STEM Challenge"
+    year: 2023
+    description: >
+      Designed a plastic waste management system aimed at reducing plastic waste through practical collection and processing workflows. Focused on collaborative, sustainable solutions intended to reduce environmental impact.
+
+  - name: Flood Remission System
     position: Disaster Management
-    location: Project
-    highlights:
-      - Developed a multipurpose disaster-management application focused on flood mitigation.
-      - Used real-time weather sensors and satellite imagery to track flood conditions and forecast flooding events.
-      - Sent early-warning alerts to residents in flood-prone areas and supported authorities in coordinating rescue, relief, and shelter.
+    award: Top 5
+    competition: "App Innovation Challenge"
+    year: 2022
+    description: >
+      Built a flood-mitigation app that forecasts flooding from live weather-sensor and satellite data, sends early warnings to residents, and helps authorities coordinate rescue and shelter.
 
-certificates:
-  - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
-    issuer: Maximilian Schwarzmüller & Manuel Lorenz
-    date:
-    url:
-    id:
-  - name: AWS Academy Graduate — AWS Academy Cloud Foundations
-    issuer: Amazon Web Services (AWS Academy)
-    date:
-    url:
-    id:
-  - name: International English Language Testing System (IELTS)
-    issuer: IELTS
-    date:
-    url:
-    id:
-
-courses:
-  - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
-    instructor: Maximilian Schwarzmüller & Manuel Lorenz
-  - name: Product Management Bootcamp
-    issuer: HDNB
-  - name: Learn React
-    instructor: Bob Ziroll
-  - name: MERN Stack Course — Convert Backend to Serverless with MongoDB Realm
-    instructor: Beau Carnes
-
-skills:
-  - category: Languages
-    skills:
-      - Rust
-      - Go
-      - C# / .NET Core
-      - SQL
-      - JavaScript
-  - category: Distributed Systems
-    skills:
-      - Raft
-      - Gossip / anti-entropy
-      - CRDTs
-      - Linearizable KV stores
-      - Append-only logs
-      - Actor-based concurrency
-      - Maelstrom / Jepsen testing
-  - category: Backend & Data
-    skills:
-      - REST APIs
-      - SQL Server / MSSQL
-      - Data migration & integration
-      - MongoDB
-      - Node.js
-      - Express
-  - category: Web
-    skills:
-      - React
-      - MERN stack
-      - Website plugins
-  - category: Infrastructure
-    skills:
-      - Kubernetes
-      - HashiCorp Consul
-      - AWS Cloud Foundations
-      - Git
-
-languages:
-  - language: English
-    fluency: Professional — IELTS
-
-interests:
-  - Distributed systems
-  - Databases
-  - Systems programming
+# certificates:
+#   - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
+#     issuer: Maximilian Schwarzmüller & Manuel Lorenz
+#     date:
+#     url:
+#     id:
+#   - name: AWS Academy Graduate — AWS Academy Cloud Foundations
+#     issuer: Amazon Web Services (AWS Academy)
+#     date:
+#     url:
+#     id:
+#   - name: International English Language Testing System (IELTS)
+#     issuer: IELTS
+#     date:
+#     url:
+#     id:
+#
+# courses:
+#   - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
+#     instructor: Maximilian Schwarzmüller & Manuel Lorenz
+#   - name: Product Management Bootcamp
+#     issuer: HDNB
+#   - name: Learn React
+#     instructor: Bob Ziroll
+#   - name: MERN Stack Course — Convert Backend to Serverless with MongoDB Realm
+#     instructor: Beau Carnes
+#
+# skills:
+#   - category: Languages
+#     skills:
+#       - Rust
+#       - Go
+#       - C# / .NET Core
+#       - SQL
+#       - JavaScript
+#   - category: Distributed Systems
+#     skills:
+#       - Raft
+#       - Gossip / anti-entropy
+#       - CRDTs
+#       - Linearizable KV stores
+#       - Append-only logs
+#       - Actor-based concurrency
+#       - Maelstrom / Jepsen testing
+#   - category: Backend & Data
+#     skills:
+#       - REST APIs
+#       - SQL Server / MSSQL
+#       - Data migration & integration
+#       - MongoDB
+#       - Node.js
+#       - Express
+#   - category: Web
+#     skills:
+#       - React
+#       - MERN stack
+#       - Website plugins
+#   - category: Infrastructure
+#     skills:
+#       - Kubernetes
+#       - HashiCorp Consul
+#       - AWS Cloud Foundations
+#       - Git
+#
+# languages:
+#   - language: English
+#     fluency: Professional — IELTS
+#
+# interests:
+#   - Distributed systems
+#   - Databases
+#   - Systems programming
 
 references:
   - name: A. S. M. Khairuzzaman

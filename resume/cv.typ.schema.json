@@ -138,10 +138,7 @@
             "items": {
               "type": "object",
               "required": [
-                "position",
-                "startDate",
-                "endDate",
-                "highlights"
+                "position"
               ],
               "properties": {
                 "position": {
@@ -154,9 +151,22 @@
                 "endDate": {
                   "type": ["string", "null"]
                 },
+                "description": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "summary": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "highlights": {
                   "type": [
                     "array",
+                    "string",
                     "null"
                   ],
                   "items": {
@@ -248,20 +258,62 @@
       "default": [],
       "items": {
         "type": "object",
-        "required": [
-          "organization",
-          "location",
-          "position",
-          "startDate",
-          "endDate",
-          "highlights"
-        ],
         "properties": {
           "organization": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "award": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "competition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "event": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "position": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "year": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
+          },
+          "date": {
+            "type": [
+              "string",
+              "integer",
+              "null"
+            ]
           },
           "location": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "url": {
             "type": [
@@ -280,9 +332,22 @@
           "endDate": {
             "type": ["string", "null"]
           },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "highlights": {
             "type": [
               "array",
+              "string",
               "null"
             ],
             "items": {
