@@ -1,62 +1,70 @@
-# path: ~/.zshrc
-# Oh My Zsh + Powerlevel10k (instant prompt is inside — keep this first)
-[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/oh-my-zsh.zsh" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/oh-my-zsh.zsh"
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Export path variables from bash
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
-
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
-
-# Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# mise is loaded by the Oh My Zsh `mise` plugin (activate + completions).
-# If you ever drop that plugin, uncomment:
-eval "$(mise activate zsh)"
-
-# For clang-format
-export PATH="/home/linuxbrew/.linuxbrew/opt/clang-format/bin:$PATH"
-
-# For golang path
-if command -v go >/dev/null 2>&1; then
-  export PATH="$PATH:$(go env GOPATH)/bin"
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# For vcpkg
-export VCPKG_ROOT="$HOME/vcpkg"
-export PATH="$VCPKG_ROOT:$PATH"
-export CMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+setopt histignorealldups sharehistory
 
-export PATH="$HOME/.local/bin:$PATH"
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
 
-# -----------------------------------------------------------------------------
-# History — better recall across tmux panes / Ghostty tabs
-# -----------------------------------------------------------------------------
-HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
-HISTSIZE=100000
-SAVEHIST=100000
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
-setopt EXTENDED_HISTORY
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
 
-# -----------------------------------------------------------------------------
-# Completion quality
-# -----------------------------------------------------------------------------
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
-# -----------------------------------------------------------------------------
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Export path variables from bash (remove if causes any issue)
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+
+# init homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# activate powerlevel10k
+source /home/linuxbrew/.linuxbrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# rustup installation if not added already
+export PATH=/home/linuxbrew/.linuxbrew/opt/rustup/bin:$PATH
+
+# cargo init
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# config for mise
+eval "$(mise activate zsh)"
+
+# config for clang-format
+export PATH=/home/linuxbrew/.linuxbrew/opt/clang-format/bin:$PATH
+
+
+# zoxide — smarter cd (`z proj`, `zi` interactive). Pairs with yazi.
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+
 # fzf — Ctrl-R history, Ctrl-T files, Alt-C directories
 # brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --no-update-rc
-# -----------------------------------------------------------------------------
 if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
   export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
@@ -67,22 +75,21 @@ if command -v fzf >/dev/null 2>&1; then
   fi
 fi
 
-# -----------------------------------------------------------------------------
-# zoxide — smarter cd (`z proj`, `zi` interactive). Pairs with yazi.
-#   brew install zoxide
-# -----------------------------------------------------------------------------
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
-fi
+# Initialize Starship Prompt (Replaces adam1)
+# if command -v starship >/dev/null 2>&1; then
+#   eval "$(starship init zsh)"
+# fi
 
-# -----------------------------------------------------------------------------
-# eza
-# -----------------------------------------------------------------------------
+# init eza
 alias ls='eza --icons --git'
 alias ll='eza -l --header --icons --git'
 alias la='eza -la --header --icons --git'
 alias tree='eza --tree'
 alias lt='eza -lT --level=2 --icons --git'
+
+# Custom aliases for eazy access
+alias proj='cd ~/proj/'
+alias rust='cd ~/proj/rust/'
 
 # Editors / rust
 alias nv='nvim'
@@ -91,46 +98,33 @@ alias cchk='cargo check'
 alias cfmt='cargo fmt'
 alias clippy='cargo clippy'
 
+# environment variables
 export EDITOR=nvim
 export VISUAL=nvim
 export PAGER=less
 export LESS='-R'
 
-# Custom aliases for eazy access
-alias proj='cd ~/proj/'
-alias rust='cd ~/proj/rust/'
-alias zshcfg="nvim ~/.zshrc"
-alias omzcfg='nvim ${XDG_CONFIG_HOME:-$HOME/.config}/zsh/oh-my-zsh.zsh'
-alias tmuxcfg='nvim ~/.tmux.conf'
-alias termcfg='nvim ~/.config/alacritty/alacritty.toml'
-alias nvimcfg='nvim ~/.config/nvim'
-alias ghosttycfg='nvim ~/.config/ghostty/config.ghostty'
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Git extras on top of the omz git plugin (gst, gco, ggp, etc.)
-alias lg='lazygit'
-alias gs='git status -sb'
-alias gd='git diff'
-alias gds='git diff --staged'
+# installation for vcpkg
+export VCPKG_ROOT="$HOME/dev/vcpkg"
+export PATH="$VCPKG_ROOT:$PATH"
+export CMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake"
+export PATH="$HOME/.local/bin:$PATH"
 
-# shell wrapper for yazi
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	command rm -f -- "$tmp"
-}
+# cuda-13.3 installation
+export PATH=/usr/local/cuda-13.3/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-13.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-# Quick extract already covered by the `extract` plugin (`x file.tar.gz`)
+# installation for ffmpeg-full
+export PATH=/home/linuxbrew/.linuxbrew/opt/ffmpeg-full/bin:$PATH
+# For compilers to find ffmpeg-full you may need to set:
+export LDFLAGS=-L/home/linuxbrew/.linuxbrew/opt/ffmpeg-full/lib
+export CPPFLAGS=-I/home/linuxbrew/.linuxbrew/opt/ffmpeg-full/include
+# For pkgconf to find ffmpeg-full you may need to set:
+export PKG_CONFIG_PATH=/home/linuxbrew/.linuxbrew/opt/ffmpeg-full/lib/pkgconfig
 
-# Added by Antigravity CLI installer
-export PATH="/home/khalidrafi/.local/bin:$PATH"
-
-# Added by LM Studio CLI tool (lms)
-export PATH="$PATH:/home/khalidrafi/.lmstudio/bin"
-
-# Added MANPATH for erlang
-export MANPATH="/home/linuxbrew/.linuxbrew/opt/erlang/lib/erlang/man"
-
-export WINIT_UNIX_BACKEND=x11
-
+# Initialize vcpkg config
+export VCPKG_ROOT="$HOME/vcpkg"
+export PATH="$VCPKG_ROOT:$PATH"
