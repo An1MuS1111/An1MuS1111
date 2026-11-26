@@ -1,5 +1,14 @@
 #import "utils.typ"
 
+// Red placeholder for details still to fill in. Usable inside any YAML text
+// field that is rendered as markup:  "Saved #todo[X hours] per week"
+// Before exporting a version to send:  grep -n "#todo" template/template.yml
+#let todo(body) = text(fill: rgb("#c4001a"), style: "italic")[\[#body\]]
+
+// Render a YAML string as Typst markup (so `code`, *bold*, _italic_ and
+// #todo[...] work in summaries, highlights, descriptions and affiliations).
+#let markup(s) = eval(str(s), mode: "markup", scope: (todo: todo))
+
 // set rules
 #let setrules(uservars, doc) = {
   set text(
@@ -66,8 +75,9 @@
   if ("location" in info.personal and info.personal.location != none) and uservars.showAddress {
     let address = info.personal.location.pairs().filter(it => it.at(1) != none and str(it.at(1)) != "")
     let location = address.map(it => str(it.at(1))).join(", ")
+    let relocation = info.personal.at("relocation", default: none)
     block(width: 100%)[
-      #location
+      #location#if relocation != none and str(relocation).trim() != "" [ · #relocation]
       #v(-4pt)
     ]
   } else { none }
@@ -128,7 +138,7 @@
   if ("summary" in info) and (info.summary != none) {
     block(breakable: isbreakable)[
       == #title
-      #eval(info.summary, mode: "markup")
+      #markup(info.summary)
     ]
   }
 }
@@ -168,10 +178,10 @@
             }
             #if bullet and ("highlights" in p) and (p.highlights != none) and (type(p.highlights) == array) {
               for hi in p.highlights [
-                - #eval(hi, mode: "markup")
+                - #markup(hi)
               ]
             } else if desc != none [
-              #eval(desc, mode: "markup")
+              #markup(desc)
             ]
           ]
           index = index + 1
@@ -215,14 +225,16 @@
             #text(style: "italic")[#edu.studyType] #h(1fr)
           ]
           #utils.daterange(start, end) \
-          #if edu-items != "" { eval(edu-items, mode: "markup") }
+          #if edu-items != "" { markup(edu-items) }
         ]
       }
     ]
   }
 }
 
-#let link-icon-svg = bytes(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`.text)
+#let link-icon-svg = bytes(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`.text,
+)
 #let link-icon = box(baseline: 0.08em, height: 0.72em, image(link-icon-svg, height: 0.72em))
 
 #let cvaffiliations(info, title: "Leadership and Activities", isbreakable: true, bullet: false) = {
@@ -251,7 +263,12 @@
           str(org.competition).trim()
         } else if "event" in org and org.event != none and str(org.event).trim() != "" {
           str(org.event).trim()
-        } else if "location" in org and org.location != none and str(org.location).trim() != "" and str(org.location).trim() != "Project" {
+        } else if (
+          "location" in org
+            and org.location != none
+            and str(org.location).trim() != ""
+            and str(org.location).trim() != "Project"
+        ) {
           str(org.location).trim()
         } else {
           none
@@ -326,10 +343,10 @@
           }
           #if bullet and ("highlights" in org) and (org.highlights != none) and (type(org.highlights) == array) {
             for hi in org.highlights [
-              - #eval(hi, mode: "markup")
+              - #markup(hi)
             ]
           } else if desc != none [
-            #eval(desc, mode: "markup")
+            #markup(desc)
           ]
         ]
       }
@@ -337,11 +354,13 @@
   }
 }
 
-#let cvprojects(info, title: "Projects", isbreakable: true) = {
-  if ("projects" in info) and (info.projects != none) {
+// `key` selects which YAML list to render, so the same layout serves
+// "projects" and "opensource" (or any other list with the same shape).
+#let cvprojects(info, title: "Projects", key: "projects", isbreakable: true) = {
+  if (key in info) and (info.at(key) != none) {
     block[
       == #title
-      #for project in info.projects {
+      #for project in info.at(key) {
         let start = utils.opt-date(project, "startDate")
         let end = utils.opt-date(project, "endDate")
         block(width: 100%, breakable: isbreakable)[
@@ -357,13 +376,13 @@
           \
           #let affil = if "affiliation" in project { project.affiliation } else { none }
           #if affil != none [
-            #text(style: "italic")[#affil] #h(1fr) #utils.daterange(start, end) \
+            #text(style: "italic")[#markup(affil)] #h(1fr) #utils.daterange(start, end) \
           ] else if start != none or end != none [
             #h(1fr) #utils.daterange(start, end) \
           ]
           #if ("highlights" in project) and (project.highlights != none) {
             for hi in project.highlights [
-              - #eval(hi, mode: "markup")
+              - #markup(hi)
             ]
           }
         ]
@@ -387,7 +406,7 @@
           Issued by #text(style: "italic")[#award.issuer] #h(1fr) #date \
           #if ("highlights" in award) and (award.highlights != none) {
             for hi in award.highlights [
-              - #eval(hi, mode: "markup")
+              - #markup(hi)
             ]
           }
         ]
@@ -464,17 +483,17 @@
   ) {
     block(breakable: isbreakable)[
       == #title
+      #if ("skills" in info) and (info.skills != none) [
+        #for group in info.skills [
+          - *#group.category*: #markup(group.skills.join(", "))
+        ]
+      ]
       #if ("languages" in info) and (info.languages != none) [
         #let langs = ()
         #for lang in info.languages {
-          langs.push([#lang.language (#lang.fluency)])
+          langs.push([#lang.language (#markup(lang.fluency))])
         }
         - *Spoken languages*: #langs.join(", ")
-      ]
-      #if ("skills" in info) and (info.skills != none) [
-        #for group in info.skills [
-          - *#group.category*: #group.skills.join(", ")
-        ]
       ]
       #if ("interests" in info) and (info.interests != none) [
         - *Interests*: #info.interests.join(", ")

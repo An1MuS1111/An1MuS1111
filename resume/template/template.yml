@@ -1,6 +1,11 @@
 # yaml-language-server: $schema=../cv.typ.schema.json
 # CV data for Abdullah Al Khalid
 # Edit this file to update content. Compile with: make compile
+#
+# Text fields are rendered as Typst markup, so:
+#   `code`  *bold*  _italic_  and  #todo[placeholder]  (renders in red)
+#   escape a literal hash as \#  (e.g. 'PR \#68', 'C\#'), and an underscore as \_
+# Before exporting a version to send:  grep -n "#todo" template/template.yml
 
 personal:
   name: Abdullah Al Khalid
@@ -9,11 +14,13 @@ personal:
   url:
   titles:
     - Software Engineer
-    - Data & Distributed Systems
+    - Backend, Distributed Systems & Open Source
   location:
     city: Dhaka
     region:
     country: Bangladesh
+  # Shown after the location. Tailor per application, or leave empty.
+  relocation: Open to relocating to Japan
   profiles:
     - network: LinkedIn
       username: khalidrafi1111
@@ -23,10 +30,106 @@ personal:
       url: https://github.com/An1MuS1111
 
 summary: >
-  Software engineering graduate focused on distributed systems, databases, and
-  backend infrastructure. Experience with .NET APIs, SQL data pipelines, and
-  systems work in Rust and Go — including Raft, gossip protocols, CRDTs, and
-  append-only logs.
+  Software engineering graduate who learns by building systems from their
+  primary sources: a storage engine from the Bitcask paper, distributed-systems
+  nodes tested under Jepsen's Maelstrom. Merged contributor to uutils, the Rust
+  coreutils Ubuntu ships by default. Backend internship in a multinational team
+  (.NET Core, SQL Server); now extending into full-stack web and cloud.
+
+skills:
+  - category: Languages
+    skills:
+      - Go
+      - Rust
+      - Python
+      - 'C\#'
+      - SQL
+      - JavaScript
+      - TypeScript
+      - C++
+      - Protocol Buffers
+  - category: Backend & data
+    skills:
+      - REST APIs
+      - gRPC
+      - .NET Core
+      - SQL Server
+      - data migration
+      - log-structured storage
+      - hash indexes
+      - B-trees
+  - category: Distributed systems
+    skills:
+      - gossip broadcast
+      - MapReduce
+      - Raft
+      - CRDTs
+      - fault injection with Maelstrom / Jepsen
+  - category: Tools & testing
+    skills:
+      - Linux
+      - Git & GitHub
+      - Docker (dev containers)
+      - Kubernetes
+      - Terraform
+      - Make
+      - Criterion
+      - Neovim
+
+languages:
+  - language: English
+    fluency: fluent; 5 years of study and work in English, and IELTS Band 7.0
+  - language: Bengali
+    fluency: native
+work:
+  - organization: DKSH CSSC
+    url: https://www.dksh.com
+    location: Kuala Lumpur, Malaysia
+    positions:
+      - position: Software Engineer Intern · Internal Applications
+        startDate: 2024-09
+        endDate: 2025-02
+        highlights:
+          - 'Built a dynamic form-mapping plugin for dksh.com (PHP, JavaScript) that captures customer enquiries directly, replacing a third-party form service.'
+          - 'Migrated SQL Server data through .NET Core APIs and data pipelines.'
+          - 'Kept internal production applications running with a cross-functional, multinational team.'
+
+# Same shape as `projects`; rendered by cvprojects(cvdata, key: "opensource").
+opensource:
+  - name: GNU uutils coreutils & uutils_term_grid
+    url: https://github.com/uutils/uutils-term-grid/pull/68
+    stack: Rust
+    affiliation: 'Rust rewrite of GNU coreutils (24k+ GitHub stars), shipped by default in Ubuntu; `term_grid` lays out the column output of its `ls` and of eza (4.4M+ crates.io downloads).'
+    highlights:
+      - '*Problem:* `ls --zero` ended rows in column layouts with a newline instead of NUL, breaking scripts that pipe filenames into `xargs -0`.'
+      - 'Traced the bug to the grid library''s hardcoded row delimiter and *merged* a configurable line separator upstream (term\_grid \#68), reworking the API in response to maintainer review.'
+      - 'Follow-up `ls` fix with regression tests is in review (coreutils \#14789). Also merged a compile fix in *notify-rust* (\#244).'
+
+projects:
+  # Uncomment when your full-stack project is live.
+  # - name: PROJECT NAME
+  #   url: https://github.com/An1MuS1111/PROJECT
+  #   stack: Go, TypeScript, React, AWS, Terraform
+  #   affiliation: 'One sentence: who has what problem, and what your app does about it.'
+  #   highlights:
+  #     - 'Go REST API with OIDC sign-in and #todo[core feature]; React + TypeScript front end with #todo[state / data-flow detail].'
+  #     - 'Containerised with Docker; deployed to AWS (ECS Fargate behind a load balancer) with Terraform; GitHub Actions tests and deploys on merge.'
+  #     - 'Unit, integration and end-to-end tests #todo[what they cover or caught].'
+  - name: ironbarrel
+    url: https://github.com/An1MuS1111/ironbarrel
+    stack: Rust
+    affiliation: An embedded key-value store that serves every read with a single disk seek and restarts quickly after a crash.
+    highlights:
+      - 'Built from the original Bitcask paper: every write is appended to a log file and an in-memory index remembers where it went, so any read needs at most one disk access. On a 6-core i5: 520k operations/sec on one thread and 3.1M reads/sec on four, at 1.2 µs per read.'
+      - 'Automatic clean-up (compaction) runs at 88k writes/sec while keeping disk usage at the size of the live data, after replacing a check that copied every key on each write (previously 7 writes/sec).'
+      - 'Hint files cut restart time after a crash from 4.4 s to 0.7 s (−84%); saving to disk every 100 ms costs about 1% throughput. 34 tests cover crashes, corrupted data and concurrent access.'
+  - name: Miserable Messengers
+    url: https://github.com/An1MuS1111/Miserable-Messengers
+    stack: Rust
+    affiliation: 'Solutions to Fly.io''s Gossip Glomers: keep nodes correct while the network drops, delays and partitions messages.'
+    highlights:
+      - 'Wrote my own Maelstrom node library in Rust (one binary per challenge) and solved the same challenges in Go: unique IDs that stay available under partitions, and multi-node gossip broadcast, verified with Jepsen''s Maelstrom' #todo[add challenges 4–6 once pushed; broadcast msgs-per-op / latency].'
+      - '*Also:* gzip/DEFLATE decoder from RFC 1951/1952 (Rust) · Distributed Task/Job Scheduler (Go) in progress.'
 
 education:
   - institution: Universiti Teknologi Malaysia (UTM)
@@ -35,123 +138,24 @@ education:
     studyType: Bachelor of Computer Science with Honours
     startDate: 2021-03
     endDate: 2026-03
-    location: Skudai, Johor, Malaysia
+    location: Johor, Malaysia
+    # highlights:
+    #   - 'CGPA: #todo[x.xx / 4.00 — include only if 3.5+]'
 
-work:
-  - organization: DKSH CSSC
-    url: https://www.dksh.com
-    location: Kuala Lumpur, Malaysia
-    positions:
-      - position: Software Engineer Intern
-        startDate: 2024-09
-        endDate: 2025-02
-        highlights:
-          - Worked with cross functional teams to keep production applications running smoothly, building a website plugin, automating manual work, and migrating SQL Server data through .NET Core APIs and pipelines.
-projects:
-  - name: ironbarrel
-    url: https://github.com/An1MuS1111/ironbarrel
-    affiliation: A log-structured hash table key-value storage engine inspired by the orignal bitcask
-    stack: Rust
-    highlights:
-      - Built a high throughput storage engine from ground up in Rust, inspired by the Basho Bitcask paper; designed lock-free concurrent indexing (KeyDir) and positional reads (pread) to achieve 280k+ ops/sec with 1.2µs p50 read latency.
-      - Engineered a crash-resilient storage & compaction pipeline using hardware-accelerated CRC32 and binary hint-file indexing, cutting 1M-key startup recovery by 96% (from 2.4s to 80ms) while automatically reclaiming dead disk space.
-  - name: Miserable Messengers / Gossip Gloomers
-    url: https://github.com/An1MuS1111/Gossip-Glomers-Solved
-    affiliation: Fly.io distributed systems challenge series
-    stack: Rust, Maelstrom/Jepsen
-    highlights:
-      - Built a Rust node engine that solved Fly.io distributed systems challenges, including gossip broadcast, CRDT counters, and a linearizable KV store.
-      - Verified correctness under network partitions, packet drops, and concurrent clients using Jepsen’s Maelstrom;
+# One line each. Add `description:` back for a longer entry.
 affiliations:
-  - name: RecyclO
-    position: Plastic Waste Management System
-    award: Top 5
-    competition: "Honeywell STEM Challenge"
+  - name: 'RecyclO: plastic-waste collection and processing system'
+    award: Top 4
+    competition: Honeywell STEM Challenge
     year: 2023
-    description: >
-      Designed a plastic waste management system aimed at reducing plastic waste through practical collection and processing workflows. Focused on collaborative, sustainable solutions intended to reduce environmental impact.
 
-  - name: Flood Remission System
-    position: Disaster Management
-    award: Top 5
-    competition: "App Innovation Challenge"
+  - name: 'Flood Remission System: flood forecasting and early-warning app'
+    award: Finalist
+    competition: App Innovation Challenge
     year: 2022
-    description: >
-      Built a flood-mitigation app that forecasts flooding from live weather-sensor and satellite data, sends early warnings to residents, and helps authorities coordinate rescue and shelter.
 
-# certificates:
-#   - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
-#     issuer: Maximilian Schwarzmüller & Manuel Lorenz
-#     date:
-#     url:
-#     id:
-#   - name: AWS Academy Graduate — AWS Academy Cloud Foundations
-#     issuer: Amazon Web Services (AWS Academy)
-#     date:
-#     url:
-#     id:
-#   - name: International English Language Testing System (IELTS)
-#     issuer: IELTS
-#     date:
-#     url:
-#     id:
-#
-# courses:
-#   - name: React, Node.js, Express & MongoDB — The MERN Full Stack Guide
-#     instructor: Maximilian Schwarzmüller & Manuel Lorenz
-#   - name: Product Management Bootcamp
-#     issuer: HDNB
-#   - name: Learn React
-#     instructor: Bob Ziroll
-#   - name: MERN Stack Course — Convert Backend to Serverless with MongoDB Realm
-#     instructor: Beau Carnes
-#
-# skills:
-#   - category: Languages
-#     skills:
-#       - Rust
-#       - Go
-#       - C# / .NET Core
-#       - SQL
-#       - JavaScript
-#   - category: Distributed Systems
-#     skills:
-#       - Raft
-#       - Gossip / anti-entropy
-#       - CRDTs
-#       - Linearizable KV stores
-#       - Append-only logs
-#       - Actor-based concurrency
-#       - Maelstrom / Jepsen testing
-#   - category: Backend & Data
-#     skills:
-#       - REST APIs
-#       - SQL Server / MSSQL
-#       - Data migration & integration
-#       - MongoDB
-#       - Node.js
-#       - Express
-#   - category: Web
-#     skills:
-#       - React
-#       - MERN stack
-#       - Website plugins
-#   - category: Infrastructure
-#     skills:
-#       - Kubernetes
-#       - HashiCorp Consul
-#       - AWS Cloud Foundations
-#       - Git
-#
-# languages:
-#   - language: English
-#     fluency: Professional — IELTS
-#
-# interests:
-#   - Distributed systems
-#   - Databases
-#   - Systems programming
-
+# Kept for other applications. Not rendered for HENNGE; to show them, add
+# #cvreferences(cvdata) back to template/template.typ.
 references:
   - name: A. S. M. Khairuzzaman
     title: Managing Director & CEO (Acting); Deputy Managing Director & COO
