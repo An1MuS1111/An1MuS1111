@@ -33,8 +33,8 @@ summary: >
   Software engineering graduate who learns by building systems from their
   primary sources: a storage engine from the Bitcask paper, distributed-systems
   nodes tested under Jepsen's Maelstrom. Merged contributor to uutils, the Rust
-  coreutils Ubuntu ships by default. Backend internship in a multinational team
-  (.NET Core, SQL Server); now extending into full-stack web and cloud.
+  coreutils Ubuntu ships by default. Backend internship in a multinational team;
+  now extending into full-stack web and cloud.
 
 skills:
   - category: Languages
