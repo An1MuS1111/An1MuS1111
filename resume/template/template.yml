@@ -20,7 +20,7 @@ personal:
     region:
     country: Bangladesh
   # Shown after the location. Tailor per application, or leave empty.
-  relocation: Open to relocating to Japan
+  relocation: Open to relocation
   profiles:
     - network: LinkedIn
       username: khalidrafi1111
@@ -96,7 +96,7 @@ work:
 
 # Same shape as `projects`; rendered by cvprojects(cvdata, key: "opensource").
 opensource:
-  - name: GNU uutils coreutils & uutils_term_grid
+  - name: uutils coreutils & uutils_term_grid
     url: https://github.com/uutils/uutils-term-grid/pull/68
     stack: Rust
     affiliation: 'Rust rewrite of GNU coreutils (24k+ GitHub stars), shipped by default in Ubuntu; `term_grid` lays out the column output of its `ls` and of eza (4.4M+ crates.io downloads).'
